@@ -1,23 +1,44 @@
-import { App, Stack, type StackProps } from "aws-cdk-lib";
-import type { Construct } from "constructs";
+import assert from "node:assert";
+import { App } from "aws-cdk-lib";
+import { AppStage } from "./stages/index.ts";
 
-export class MyStack extends Stack {
-    constructor(scope: Construct, id: string, props: StackProps = {}) {
-        super(scope, id, props);
+const stage = process.env.STAGE;
+assert.ok(stage, "STAGE environment variable must be set to a value");
 
-        // define resources here...
-    }
-}
+const testAccount = {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: process.env.CDK_DEFAULT_REGION,
+};
 
-// for development, use account/region from cdk cli
-const devEnv = {
+const prodAccount = {
     account: process.env.CDK_DEFAULT_ACCOUNT,
     region: process.env.CDK_DEFAULT_REGION,
 };
 
 const app = new App();
 
-new MyStack(app, "cdk-stages-and-shared-resources-dev", { env: devEnv });
-// new MyStack(app, 'cdk-stages-and-shared-resources-prod', { env: prodEnv });
+switch (stage) {
+    case "test":
+        new AppStage(app, "test", {
+            env: testAccount,
+            deploySharedResources: false,
+        });
+        break;
+    case "prod":
+        new AppStage(app, "prod", {
+            env: prodAccount,
+            deploySharedResources: true,
+        });
+        break;
+    default:
+        if (stage.startsWith("dev")) {
+            new AppStage(app, stage, {
+                env: testAccount,
+                deploySharedResources: false,
+            });
+        } else {
+            throw new Error(`unknown stage: ${stage}`);
+        }
+}
 
 app.synth();
