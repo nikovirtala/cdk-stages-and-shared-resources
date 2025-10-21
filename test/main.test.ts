@@ -1,0 +1,12 @@
+import { App } from "aws-cdk-lib";
+import { Template } from "aws-cdk-lib/assertions";
+import { expect, it } from "vitest";
+import { MyStack } from "../src/main";
+
+it("should match snapshot", () => {
+    const app = new App();
+    const stack = new MyStack(app, "test");
+
+    const template = Template.fromStack(stack);
+    expect(template.toJSON()).toMatchSnapshot();
+});
