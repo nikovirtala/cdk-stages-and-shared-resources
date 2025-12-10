@@ -11,6 +11,9 @@
     "destroy": "npx projen destroy",
     "diff": "npx projen diff",
     "eject": "npx projen eject",
+    "homebrew:bundle": "npx projen homebrew:bundle",
+    "install:homebrew": "npx projen install:homebrew",
+    "mise:trust": "npx projen mise:trust",
     "package": "npx projen package",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
@@ -26,24 +29,23 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2",
-    "@nikovirtala/projen-aws-cdk-app": "^0.0.126",
-    "@nikovirtala/projen-vitest": "^2.0.114",
-    "@types/node": "^22",
-    "@vitest/coverage-v8": "^3",
+    "@nikovirtala/projen-constructs": "^0.2.34",
+    "@types/node": "^24",
+    "@vitest/coverage-v8": "^4",
     "aws-cdk": "^2",
     "esbuild": "^0.25.11",
     "projen": "^0.98.3",
     "tsx": "^4.20.6",
-    "typescript": "5.8.3",
-    "vitest": "^3"
+    "typescript": "5.9.3",
+    "vitest": "^4"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.202.0",
-    "constructs": "^10.0.5"
+    "aws-cdk-lib": "^2.1.0",
+    "constructs": "^10.4.3"
   },
   "pnpm": {},
   "engines": {
-    "node": ">= 22.16.0"
+    "node": ">= 24.11.1"
   },
   "license": "Apache-2.0",
   "publishConfig": {
