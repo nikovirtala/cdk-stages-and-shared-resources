@@ -1,9 +1,9 @@
-import { AwsCdkApp } from "@nikovirtala/projen-aws-cdk-app";
+import { AwsCdkTypeScriptAppProject } from "@nikovirtala/projen-constructs";
 
-const project = new AwsCdkApp({
+const project = new AwsCdkTypeScriptAppProject({
     cdkVersion: "2.1.0",
     defaultReleaseBranch: "main",
-    devDeps: ["@nikovirtala/projen-aws-cdk-app"],
+    devDeps: ["@nikovirtala/projen-constructs"],
     name: "cdk-stages-and-shared-resources",
     projenrcTs: true,
 
