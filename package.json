@@ -33,7 +33,7 @@
     "@types/node": "^24",
     "@vitest/coverage-v8": "^4",
     "aws-cdk": "^2",
-    "esbuild": "^0.25.11",
+    "esbuild": "^0.28.1",
     "projen": "^0.98.3",
     "tsx": "^4.20.6",
     "typescript": "5.9.3",
