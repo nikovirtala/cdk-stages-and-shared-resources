@@ -1,7 +1,7 @@
 import { AwsCdkTypeScriptAppProject } from "@nikovirtala/projen-constructs";
 
 const project = new AwsCdkTypeScriptAppProject({
-    cdkVersion: "2.1.0",
+    cdkVersion: "2.220.0",
     defaultReleaseBranch: "main",
     devDeps: ["@nikovirtala/projen-constructs"],
     name: "cdk-stages-and-shared-resources",
